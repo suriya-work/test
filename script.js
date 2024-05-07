@@ -1,12 +1,35 @@
-
-function copyArraye(arraye) {
-    const outPut = []
+function copyArraye(arraye, instruction) {
+    const outPut = [];
     for (let i = 0; i < arraye.length; i++) {
-        outPut.push(arraye[i] * 2)
+        outPut.push(instruction(arraye[i]));
     }
 
-    return outPut
+    return outPut;
 }
-const myArraye = [1, 2, 3 ,4,5,6]
-const result = copyArraye(myArraye)
-console.log(result)
+// const myArraye = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+// const result = copyArraye(myArraye)
+function multiOlay(input) {
+    return input * 2;
+}
+
+const result = copyArraye([1, 2, 3, 4, 5], multiOlay);
+console.log(result);
+//
+const area = function (redius) {
+    return Math.PI * redius * redius;
+};
+
+const diameter = function (redius) {
+    return 2 * redius;
+};
+
+function calcCircle(rediuses, callback) {
+    const output = [];
+    for (let i = 0; i < rediuses.length; i++) {
+        output.push(callback(rediuses[i]));
+    }
+
+    return output;
+}
+
+calcCircle(r, diameter);
